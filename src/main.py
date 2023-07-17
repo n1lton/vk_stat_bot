@@ -162,8 +162,8 @@ def catch_messages():
         if text == "стата":
             stats(event)
         
-        elif text.startswith("стата моя"):
-            args = words[2:]
+        elif text.startswith("профиль"):
+            args = words[1:]
             profile(event, args)
 
         elif text.startswith("стата вся"):
