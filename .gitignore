@@ -1,0 +1,4 @@
+*venv
+*.db
+plot.png
+config1.py
