@@ -137,9 +137,10 @@ def stats_all(event):
     plt.plot(x, y)
     plt.title('Статистика сообщений за последний месяц', fontsize=14, loc='left') 
     plt.savefig("plot.png")
+    plt.clf()
 
-    with open("plot.png", "rb") as plot:
-        send(event, message, disable_mentions=True, attachment=plot)
+    with open("plot.png", "rb") as f:
+        send(event, message, disable_mentions=True, attachment=f)
 
 
 def catch_messages():
