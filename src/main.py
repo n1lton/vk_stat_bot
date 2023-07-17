@@ -1,4 +1,4 @@
-import vk_api, vk, sqlite3, config
+import vk_api, vk, sqlite3, config, time
 from vk_api.utils import get_random_id
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from datetime import datetime
@@ -172,13 +172,11 @@ def catch_messages():
         
 
 while True:
-    # try:
-    #     catch_messages()
-    # except Exception as err:
-    #     print(err)
-    #     time.sleep(10)
-
-    catch_messages()
+    try:
+        catch_messages()
+    except Exception as err:
+        print(err)
+        time.sleep(10)
         
 
         
