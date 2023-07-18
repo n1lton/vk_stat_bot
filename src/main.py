@@ -114,7 +114,7 @@ def stats(event):
 
 
 def stats_all(event):
-    top_users = cur.execute(f"SELECT id, count FROM messages ORDER BY count DESC LIMIT 10").fetchall()
+    top_users = cur.execute(f"SELECT id, SUM(count) FROM messages ORDER BY count DESC LIMIT 10").fetchall()
     
     if not top_users:
         send(event, "Еще никто не писал в чат")
