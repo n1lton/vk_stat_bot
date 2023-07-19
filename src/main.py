@@ -114,7 +114,7 @@ def stats(event):
 
 
 def stats_all(event):
-    top_users = cur.execute(f"SELECT id, SUM(count) FROM messages ORDER BY count DESC LIMIT 10").fetchall()
+    top_users = cur.execute("SELECT id, SUM(count) AS count_total FROM messages GROUP BY id ORDER BY count_total DESC LIMIT 10").fetchall()
     
     if not top_users:
         send(event, "Еще никто не писал в чат")
@@ -128,7 +128,7 @@ def stats_all(event):
 
     message += f"\nВсего сообщений: {messages_total}"
 
-    data = cur.execute("SELECT date, SUM(count) FROM messages GROUP BY date LIMIT 3 OFFSET -3").fetchall()
+    data = cur.execute("SELECT date, SUM(count) FROM messages GROUP BY date ORDER BY date LIMIT 30").fetchall()
     x, y = [], []
     for date, messages in data:
         x.append(date)
